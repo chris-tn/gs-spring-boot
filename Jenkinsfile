@@ -12,7 +12,6 @@ node(){
         mavenSettingsConfig: 'my-maven-settings')  {
                 sh 'pwd'
                 sh 'ls -lash'
-                sh 'which nvm'
                 sh './test/run.sh'
             }
         }
