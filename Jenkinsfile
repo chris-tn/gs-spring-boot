@@ -12,7 +12,7 @@ podTemplate(label: label, cloud: 'kubernetes', containers: [
         resourceRequestCpu: '1',
         resourceLimitCpu: '1',
         resourceRequestMemory: '1000Mi',
-        resourceLimitMemory: '2000Mi',
+        resourceLimitMemory: '1000Mi',
         envVars: [
             envVar(key: 'JENKINS_URL', value: 'http://cd-jenkins.default.svc.cluster.local:8080'),
         ],
