@@ -1,7 +1,7 @@
 node{
         stage('Build') {
 
-            sh 'sudo yum install -y maven'
+            sh './test/run.sh'
         }
 
         stage('Test') {
