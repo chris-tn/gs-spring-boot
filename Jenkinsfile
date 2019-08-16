@@ -1,4 +1,4 @@
-node ('java'){
+node ('jnlp-slave-with-java-build-tools'){
         stage('Build') {
 
             sh './test/run.sh'
