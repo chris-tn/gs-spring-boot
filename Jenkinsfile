@@ -1,5 +1,21 @@
-node(){
-        stage('checkout'){
+podTemplate(cloud: 'kubernetes', containers: [
+    containerTemplate(
+        name: 'jnpm2',
+        image: 'jenkins/jnlp-slave:3.27-1',
+        ttyEnabled: true,
+        privileged: false,
+        alwaysPullImage: false,
+        workingDir: '/home/jenkins/agent',
+        resourceRequestCpu: '1',
+        resourceLimitCpu: '1',
+        resourceRequestMemory: '1000Mi',
+        resourceLimitMemory: '2000Mi',
+        envVars: [
+            envVar(key: 'JENKINS_URL', value: 'http://cd-jenkins.default.svc.cluster.local:8080'),
+        ],
+    ),
+]) {
+       stage('checkout'){
            checkout scm
         }
         stage('Build') {
@@ -18,5 +34,4 @@ node(){
         stage('Test') {
             echo './gradlew --full-stacktrace --info test'
         }
-
-  }
+}
