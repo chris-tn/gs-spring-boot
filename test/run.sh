@@ -1,6 +1,4 @@
 #!/bin/sh
-sudo yum install -y maven
-mvn -version
 cd $(dirname $0)
 
 cd ../complete
