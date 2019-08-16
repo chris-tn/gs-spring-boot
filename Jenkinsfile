@@ -1,4 +1,4 @@
-node ('jnlp-slave-with-java-build-tools'){
+node ('jnlp-agent-maven'){
         stage('Build') {
 
             sh './test/run.sh'
