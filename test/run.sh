@@ -4,4 +4,4 @@ cd $(dirname $0)
 cd ../complete
 
 
-mvn clean package
+mvn clean package -Dmaven.test.skip=true
