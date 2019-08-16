@@ -1,4 +1,4 @@
-node ('jnlp-agent-maven'){
+node{
         stage('Build') {
 
             sh './test/run.sh'
