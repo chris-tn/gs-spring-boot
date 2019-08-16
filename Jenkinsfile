@@ -1,29 +1,4 @@
-def label = "worker-${UUID.randomUUID().toString()}"
-
-podTemplate(label: label, cloud: 'kubernetes', containers: [
-    containerTemplate(
-        name: 'jnpm2',
-        image: 'jenkins/jnlp-slave:3.27-1',
-        ttyEnabled: true,
-        privileged: false,
-        alwaysPullImage: false,
-        workingDir: '/home/jenkins/slave',
-        command: 'cat',
-        resourceRequestCpu: '1',
-        resourceLimitCpu: '1',
-        resourceRequestMemory: '1000Mi',
-        resourceLimitMemory: '1000Mi',
-        envVars: [
-            envVar(key: 'JENKINS_URL', value: 'http://cd-jenkins.default.svc.cluster.local:8080'),
-        ],
-    ),
-],
-volumes: [
-  hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock')
-]) {
-  node(label) {
-
-
+ node {
        stage('checkout'){
            checkout scm
         }
@@ -43,5 +18,4 @@ volumes: [
         stage('Test') {
             echo './gradlew --full-stacktrace --info test'
         }
-}
 }
