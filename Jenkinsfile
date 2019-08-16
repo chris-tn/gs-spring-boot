@@ -3,10 +3,12 @@ node('jenkins-slave-maven-centos7'){
            checkout scm
         }
         stage('Build') {
+            withMaven(mavenSettingsConfig:'my-maven-settings') {
             sh 'pwd'
             sh 'ls -lash'
-            sh 'ls -lash test'
+            sh 'which nvm'
             sh './test/run.sh'
+            }
         }
         stage('Test') {
             echo './gradlew --full-stacktrace --info test'
