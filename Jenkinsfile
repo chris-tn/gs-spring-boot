@@ -15,6 +15,7 @@ podTemplate(cloud: 'kubernetes', containers: [
         ],
     ),
 ]) {
+node{
        stage('checkout'){
            checkout scm
         }
@@ -34,4 +35,5 @@ podTemplate(cloud: 'kubernetes', containers: [
         stage('Test') {
             echo './gradlew --full-stacktrace --info test'
         }
+}
 }
