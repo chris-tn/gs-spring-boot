@@ -1,9 +1,9 @@
-node('jenkins-slave-maven-centos7'){
+node(){
         stage('checkout'){
            checkout scm
         }
         stage('Build') {
-            withMaven(mavenSettingsConfig:'my-maven-settings') {
+            withMaven() {
             sh 'pwd'
             sh 'ls -lash'
             sh 'which nvm'
