@@ -7,7 +7,7 @@ podTemplate(label: label, cloud: 'kubernetes', containers: [
         ttyEnabled: true,
         privileged: false,
         alwaysPullImage: false,
-        workingDir: '/home/jenkins/agent',
+        workingDir: '/home/jenkins',
         resourceRequestCpu: '1',
         resourceLimitCpu: '1',
         resourceRequestMemory: '1000Mi',
