@@ -3,7 +3,7 @@ node(){
            checkout scm
         }
         stage('Build') {
-            withMaven() {
+            withMaven({}) {
             sh 'pwd'
             sh 'ls -lash'
             sh 'which nvm'
