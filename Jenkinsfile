@@ -1,4 +1,6 @@
-podTemplate(cloud: 'kubernetes', containers: [
+def label = "worker-${UUID.randomUUID().toString()}"
+
+podTemplate(label: label, cloud: 'kubernetes', containers: [
     containerTemplate(
         name: 'jnpm2',
         image: 'jenkins/jnlp-slave:3.27-1',
@@ -14,8 +16,13 @@ podTemplate(cloud: 'kubernetes', containers: [
             envVar(key: 'JENKINS_URL', value: 'http://cd-jenkins.default.svc.cluster.local:8080'),
         ],
     ),
+],
+volumes: [
+  hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock')
 ]) {
-node('jnpm2'){
+  node(label) {
+
+
        stage('checkout'){
            checkout scm
         }
