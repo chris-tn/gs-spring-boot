@@ -1,4 +1,7 @@
 node('jenkins-slave-maven-centos7'){
+        stage('checkout'){
+           checkout scm
+        }
         stage('Build') {
             sh 'pwd'
             sh 'ls -lash'
