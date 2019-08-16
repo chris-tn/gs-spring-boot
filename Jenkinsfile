@@ -1,4 +1,4 @@
-node{
+node('jenkins-slave-maven-centos7'){
         stage('Build') {
 
             sh './test/run.sh'
