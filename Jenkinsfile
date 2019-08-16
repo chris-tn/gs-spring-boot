@@ -15,7 +15,7 @@ podTemplate(cloud: 'kubernetes', containers: [
         ],
     ),
 ]) {
-node{
+node('jnpm2'){
        stage('checkout'){
            checkout scm
         }
